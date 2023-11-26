@@ -1,0 +1,27 @@
+.salesPersonContainer {
+  background-color: var(--color-dark);
+  padding: 5px;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+.salesPersonContent {
+  background-color: var(--color-medium);
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.centerButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: auto;
+}
+.updateBtn {
+  background-color: var(--color-theme);
+  color: var(--color-light);
+  font-weight: 500;
+  margin-top: 12px;
+  width: 100%;
+}
