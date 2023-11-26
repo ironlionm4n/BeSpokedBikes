@@ -1,10 +1,24 @@
-/* Provide sufficient contrast against white background */
+:root {
+  --color-darkest: #343a40;
+  --color-dark: #495057;
+  --color-medium: #ced4da;
+  --color-light: #f1f3f5;
+
+  --color-theme: #1098ad;
+  --color-accent: #ffa94d;
+}
+
+.mainDiv {
+  background-color: var(--color-darkest);
+  height: 100vh;
+}
+
 a {
   color: #0366d6;
 }
 
 code {
-  color: #E01A76;
+  color: #e01a76;
 }
 
 .btn-primary {

@@ -46,7 +46,7 @@ using(var scope = app.Services.CreateScope())
             PurchasePrice = 950.00M,
             SalePrice = 599.00M,
             QtyOnHand = 11,
-            CommissionPercentage = .20
+            CommissionPercentage = .12
             },
             new Product {
             Id = 3,
@@ -56,7 +56,27 @@ using(var scope = app.Services.CreateScope())
             PurchasePrice = 689.95M,
             SalePrice = 399.95M,
             QtyOnHand = 20,
-            CommissionPercentage = .20
+            CommissionPercentage = .10
+            },
+            new Product {
+            Id = 4,
+            Name = "General Lee",
+            Manufacturer = "DK",
+            Style = BikeStyle.BMX,
+            PurchasePrice = 875.99M,
+            SalePrice = 729.99M,
+            QtyOnHand = 1,
+            CommissionPercentage = .15
+            },
+            new Product {
+            Id = 5,
+            Name = "Endurance CF 8",
+            Manufacturer = "Canyon",
+            Style = BikeStyle.Road,
+            PurchasePrice = 2499.00M,
+            SalePrice = 2099.00M,
+            QtyOnHand = 3,
+            CommissionPercentage = .17
             },
         });
         dbContext.SaveChanges();
@@ -72,7 +92,7 @@ using(var scope = app.Services.CreateScope())
                 PhoneNumber = "5555550000",
                 StartDate = DateTime.Now,
                 TerminationDate = null,
-                Manager = "Steve Miller"
+                Manager = "Steve Pryor"
             },
             new SalesPerson
             {
@@ -83,7 +103,29 @@ using(var scope = app.Services.CreateScope())
                 PhoneNumber = "5555551111",
                 StartDate = DateTime.Now,
                 TerminationDate = null,
-                Manager = "Steve Miller"
+                Manager = "Lisa Zimmerman"
+            },
+            new SalesPerson
+            {
+                Id = 3,
+                FirstName = "Jennifer",
+                LastName = "Williams",
+                Address = "111 PeachTree Street",
+                PhoneNumber = "5554441234",
+                StartDate = DateTime.Now,
+                TerminationDate = null,
+                Manager = "Steve Pryor"
+            },
+            new SalesPerson
+            {
+                Id = 4,
+                FirstName = "Angie",
+                LastName = "Richards",
+                Address = "4455 PeachTree Blvd",
+                PhoneNumber = "4705551221",
+                StartDate = DateTime.Now,
+                TerminationDate = null,
+                Manager = "Lisa Zimmerman"
             }
         });
         dbContext.SaveChanges();

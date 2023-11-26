@@ -1,6 +1,7 @@
 ﻿using BeSpokedBikes.Context;
 using BeSpokedBikes.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BeSpokedBikes.Controllers
 {
@@ -16,15 +17,15 @@ namespace BeSpokedBikes.Controllers
         }
 
         [HttpGet("products")]
-        public ActionResult GetAllProducts()
+        public async Task<ActionResult> GetAllProducts()
         {
-            var products = _context.Products.ToList();
+            var products = await _context.Products.ToListAsync();
             return Ok(products);
         }
 
-        [HttpGet("products/{id}")] public ActionResult GetProduct(int id)
+        [HttpGet("products/{id}")] public async Task<ActionResult> GetProduct(int id)
         {
-            var product = _context.Products.FirstOrDefault(p => p.Id == id);
+            var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
             if(product == null)
             {
                 return NotFound();
@@ -57,10 +58,44 @@ namespace BeSpokedBikes.Controllers
         }
 
         [HttpGet("sales")]
-        public ActionResult GetSalesTeam() 
+        public async Task<ActionResult> GetSalesTeam() 
         {
-            var salesteam = _context.SalesPersons.ToList();
+            var salesteam = await _context.SalesPersons.ToListAsync();
             return Ok(salesteam);
+        }
+
+        [HttpGet("sales/{id}")]
+        public async Task<ActionResult> GetSalesPerson(int id)
+        {
+            var salesPerson = await _context.SalesPersons.FindAsync(id);
+
+            if(salesPerson == null)
+            { return NotFound(); }
+
+            return Ok(salesPerson);
+        }
+
+        [HttpPut("sales/{id}")]
+        public async Task<ActionResult> UpdateSalesPerson(int id, [FromBody] SalesPerson newProduct)
+        {
+            var salesPerson = await _context.SalesPersons.FindAsync(id);
+            if (salesPerson == null)
+            {
+                return NotFound();
+            }
+
+            salesPerson.FirstName = newProduct.FirstName;
+            salesPerson.LastName = newProduct.LastName;
+            salesPerson.PhoneNumber = newProduct.PhoneNumber;
+            salesPerson.Address = newProduct.Address;
+            salesPerson.StartDate = newProduct.StartDate;
+            salesPerson.TerminationDate = newProduct.TerminationDate;
+            salesPerson.Manager = newProduct.Manager;
+
+            await _context.SaveChangesAsync();
+
+            return Ok(salesPerson);
+
         }
     }
 }

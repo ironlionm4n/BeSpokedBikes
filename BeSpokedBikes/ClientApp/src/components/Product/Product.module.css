@@ -1,11 +1,50 @@
 ﻿.productContainer {
-  width: 20rem;
-  margin: 5px;
-  background-color: red;
+  background-color: var(--color-dark);
   padding: 5px;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+.productGridContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 15px;
+  padding: 15px;
+}
+
+.productHeader {
+  color: var(--color-light);
+  font-weight: bolder;
 }
 
 .productContainer div {
-  background-color: blue;
+  background-color: var(--color-medium);
+  width: 100%;
+  border-radius: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid black;
+}
+
+.productContent {
+  font-weight: 700;
+  padding: 10px;
+  width: 100%;
+}
+
+.centerButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: auto;
+}
+.updateBtn {
+  background-color: var(--color-theme);
+  color: var(--color-light);
+  font-weight: 500;
+  margin-top: 12px;
   width: 100%;
 }

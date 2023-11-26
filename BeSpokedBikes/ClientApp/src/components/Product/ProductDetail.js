@@ -89,12 +89,13 @@ const ProductDetail = () => {
         <Loader />
       ) : product ? (
         <>
-          <h1>Product Detail</h1>
+          <h1 style={{ color: "white" }}>Update Product's Details</h1>
           <div className={styles.detailContainer}>
             <div className={styles.details}>
               <h2>{product.manufacturer}</h2>
               <h3>{product.name}</h3>
               <p>
+                Bike Style:{" "}
                 {product.style === 0
                   ? "Road Bike"
                   : product.style === 1
@@ -103,6 +104,8 @@ const ProductDetail = () => {
               </p>
               <p>Purchase Price: ${product.purchasePrice.toFixed(2)}</p>
               <p>Sale Price: ${product.salePrice.toFixed(2)}</p>
+              <p>Quantity On Hande: {product.qtyOnHand}</p>
+              <p>Commission Percentage: {product.commissionPercentage}%</p>
             </div>
             <form onSubmit={handleSubmit} className={styles.details}>
               <div className={styles.input}>
@@ -187,7 +190,7 @@ const ProductDetail = () => {
                   max={1000}
                 />
               </div>
-              <button type="submit">Submit</button>
+              <button type="submit">Update</button>
             </form>
           </div>
         </>
