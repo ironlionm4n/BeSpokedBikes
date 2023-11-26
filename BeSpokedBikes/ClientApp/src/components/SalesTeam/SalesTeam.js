@@ -14,10 +14,10 @@ const SalesTeam = () => {
           const data = await response.json();
           setSalesTeam(data);
         } else {
-          console.error(`Server Error: ${response.error}`);
+          throw new Error("Network error, response was not ok");
         }
       } catch (e) {
-        console.error(`Network Error: ${e}`);
+        console.error(`There was a problem in the request: ${e}`);
       }
     };
 

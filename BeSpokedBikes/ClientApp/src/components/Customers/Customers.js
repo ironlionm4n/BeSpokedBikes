@@ -1,9 +1,40 @@
-const Customers = () => {
-    return (
-        <div>
-            <h1>Customers</h1>
-        </div>
-    )
-}
+import { useState, useEffect } from "react";
+import styles from "./Customers.module.css";
+import Customer from "./Customer";
 
-export default Customers
+const Customers = () => {
+  const [customers, setCustomers] = useState([]);
+  useEffect(() => {
+    const getCustomers = async () => {
+      try {
+        const response = await fetch(
+          "https://localhost:7255/BeSpokedBikesAPI/customers"
+        );
+
+        if (response.ok) {
+          const data = await response.json();
+          setCustomers(data);
+        } else {
+          throw new Error("Network error, response was not ok");
+        }
+      } catch (e) {
+        console.error(`There was a problem in the request: ${e}`);
+      }
+    };
+
+    getCustomers();
+  }, []);
+
+  return (
+    <div>
+      <h2 style={{ color: "white" }}>Customers</h2>
+      <div className={styles.customerGridContainer}>
+        {customers.map((person) => (
+          <Customer customer={person} key={person.id} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Customers;

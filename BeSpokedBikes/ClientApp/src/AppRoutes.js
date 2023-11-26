@@ -1,9 +1,10 @@
 import { Home } from "./components/Home";
-import SalesTeam from "./components/Sales/SalesTeam";
+import SalesTeam from "./components/SalesTeam/SalesTeam";
 import Products from "./components/Product/Products";
 import Customers from "./components/Customers/Customers";
-import SalesPersonDetail from "./components/Sales/SalesPersonDetail";
+import SalesPersonDetail from "./components/SalesTeam/SalesPersonDetail";
 import ProductDetail from "./components/Product/ProductDetail";
+import Sales from "./components/Sales/Sales";
 
 const AppRoutes = [
   {
@@ -29,6 +30,10 @@ const AppRoutes = [
   {
     path: "/products/:id",
     element: <ProductDetail />,
+  },
+  {
+    path: "/sales",
+    element: <Sales />,
   },
 ];
 

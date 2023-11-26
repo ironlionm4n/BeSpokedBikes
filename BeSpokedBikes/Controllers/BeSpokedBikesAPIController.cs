@@ -97,5 +97,17 @@ namespace BeSpokedBikes.Controllers
             return Ok(salesPerson);
 
         }
+
+        [HttpGet("customers")]
+        public async Task<ActionResult> GetCustomers()
+        {
+            var customers = await _context.Customers.ToListAsync();
+            if(customers == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(customers);
+        }
     }
 }
