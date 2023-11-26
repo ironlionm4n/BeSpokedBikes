@@ -53,9 +53,10 @@ const SalesPersonDetail = () => {
       ...updateData,
       startDate: new Date(updateData.startDate).toISOString(),
       terminationDate: updateData.terminationDate
-        ? new Date(updateData.terminationDate).toISOString
+        ? new Date(updateData.terminationDate).toISOString()
         : null,
     };
+    console.log(JSON.stringify(formattedBody));
     try {
       const response = await fetch(
         `http://localhost:5000/BeSpokedBikesAPI/sales-team/${id}`,
