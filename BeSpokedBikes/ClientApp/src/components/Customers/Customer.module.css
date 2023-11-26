@@ -1,0 +1,17 @@
+.customerContainer {
+  background-color: var(--color-dark);
+  padding: 5px;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+.customerContainer div {
+  background-color: var(--color-medium);
+  width: 100%;
+  border-radius: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid black;
+}

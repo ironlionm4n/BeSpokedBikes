@@ -37,6 +37,14 @@ const SalesPersonDetail = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [salesPerson, setSalesPerson] = useState(null);
   const [updateData, setUpdateData] = useState(initialSalesPersonData);
+  let terminationDate = salesPerson?.terminationDate
+    ? new Date(salesPerson.terminationDate)
+    : "";
+  if (terminationDate) {
+    terminationDate = `${
+      terminationDate.getMonth() + 1
+    }/${terminationDate.getDate()}/${terminationDate.getFullYear()}`;
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -129,8 +137,7 @@ const SalesPersonDetail = () => {
               <p>Address: {salesPerson.address}</p>
               <p>Start Date: {formatDate(salesPerson.startDate)}</p>
               <p>
-                Termination Date:{" "}
-                {salesPerson.terminationDate || "No Termination Date"}
+                Termination Date: {terminationDate || "No Termination Date"}
               </p>
               <p>Manager: {salesPerson.manager}</p>
             </div>

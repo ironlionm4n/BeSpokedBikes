@@ -90,8 +90,8 @@ using(var scope = app.Services.CreateScope())
                 LastName = "Smith",
                 Address = "123 Somewhere Street",
                 PhoneNumber = "5555550000",
-                StartDate = DateTime.Now,
-                TerminationDate = null,
+                StartDate = new DateTime(2015, 7, 12, 0, 0, 0),
+                TerminationDate = new DateTime(2018, 10, 12, 0, 0, 0),
                 Manager = "Steve Pryor"
             },
             new SalesPerson
@@ -101,7 +101,7 @@ using(var scope = app.Services.CreateScope())
                 LastName = "Harrison",
                 Address = "321 Elsewhere Road",
                 PhoneNumber = "5555551111",
-                StartDate = DateTime.Now,
+                StartDate = new DateTime(2018, 11, 1, 0, 0, 0),
                 TerminationDate = null,
                 Manager = "Lisa Zimmerman"
             },
@@ -112,7 +112,7 @@ using(var scope = app.Services.CreateScope())
                 LastName = "Williams",
                 Address = "111 PeachTree Street",
                 PhoneNumber = "5554441234",
-                StartDate = DateTime.Now,
+                StartDate = new DateTime(2019, 1, 22, 0, 0, 0),
                 TerminationDate = null,
                 Manager = "Steve Pryor"
             },
@@ -123,7 +123,7 @@ using(var scope = app.Services.CreateScope())
                 LastName = "Richards",
                 Address = "4455 PeachTree Blvd",
                 PhoneNumber = "4705551221",
-                StartDate = DateTime.Now,
+                StartDate = new DateTime(2020, 3, 1, 0, 0, 0),
                 TerminationDate = null,
                 Manager = "Lisa Zimmerman"
             }
@@ -151,10 +151,19 @@ using(var scope = app.Services.CreateScope())
             new Customer
             {
                 Id = 3,
-                FirstName = "Tim",
-                LastName = "Allen",
+                FirstName = "Pamela",
+                LastName = "Daley",
                 Address = "698 Overthere Drive",
                 PhoneNumber = "5555554444",
+                StartDate = DateTime.Now,
+            },
+            new Customer
+            {
+                Id = 4,
+                FirstName = "Wendy",
+                LastName = "Iris",
+                Address = "1234 PeachTree Court",
+                PhoneNumber = "4445551234",
                 StartDate = DateTime.Now,
             }
         });
