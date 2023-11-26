@@ -33,8 +33,8 @@ using(var scope = app.Services.CreateScope())
             Name = "V2 XT", 
             Manufacturer = "Ibis Ripmo", 
             Style = BikeStyle.Mountain,  
-            PurchasePrice = 6959.00M,
-            SalePrice = 6459.00M,
+            PurchasePrice = 3525.00M,
+            SalePrice = 6959.99M,
             QtyOnHand = 10,
             CommissionPercentage = .20
             },
@@ -43,8 +43,8 @@ using(var scope = app.Services.CreateScope())
             Name = "Allez",
             Manufacturer = "Specialized",
             Style = BikeStyle.Road,
-            PurchasePrice = 950.00M,
-            SalePrice = 599.00M,
+            PurchasePrice = 450.00M,
+            SalePrice = 950.99M,
             QtyOnHand = 11,
             CommissionPercentage = .12
             },
@@ -53,8 +53,8 @@ using(var scope = app.Services.CreateScope())
             Name = "Fit Series 22",
             Manufacturer = "FitBike Co.",
             Style = BikeStyle.BMX,
-            PurchasePrice = 689.95M,
-            SalePrice = 399.95M,
+            PurchasePrice = 325.99M,
+            SalePrice = 689.95M,
             QtyOnHand = 20,
             CommissionPercentage = .10
             },
@@ -63,8 +63,8 @@ using(var scope = app.Services.CreateScope())
             Name = "General Lee",
             Manufacturer = "DK",
             Style = BikeStyle.BMX,
-            PurchasePrice = 875.99M,
-            SalePrice = 729.99M,
+            PurchasePrice = 455.99M,
+            SalePrice = 875.99M,
             QtyOnHand = 1,
             CommissionPercentage = .15
             },
@@ -73,8 +73,8 @@ using(var scope = app.Services.CreateScope())
             Name = "Endurance CF 8",
             Manufacturer = "Canyon",
             Style = BikeStyle.Road,
-            PurchasePrice = 2499.00M,
-            SalePrice = 2099.00M,
+            PurchasePrice = 1199.00M,
+            SalePrice = 2499.99M,
             QtyOnHand = 3,
             CommissionPercentage = .17
             },
@@ -165,6 +165,15 @@ using(var scope = app.Services.CreateScope())
                 Address = "1234 PeachTree Court",
                 PhoneNumber = "4445551234",
                 StartDate = DateTime.Now,
+            },
+            new Customer
+            {
+                Id = 5,
+                FirstName = "Samantha",
+                LastName = "Thompson",
+                Address = "5678 Wilimington Pike",
+                PhoneNumber = "7875556543",
+                StartDate = DateTime.Now,
             }
         });
         dbContext.SaveChanges();
@@ -178,21 +187,63 @@ using(var scope = app.Services.CreateScope())
                     ProductId = 1,
                     SalesPersonId = 1,
                     CustomerId = 1,
-                    SaleDate = DateTime.Now,
+                    SaleDate = new DateTime(2021, 2, 22, 0, 0, 0),
                 },
                 new Sale
                 {
                     ProductId = 2,
                     SalesPersonId = 1,
                     CustomerId = 2,
-                    SaleDate = DateTime.Now,
+                    SaleDate = new DateTime(2019, 12, 21, 0, 0, 0),
                 },
                 new Sale
                 {
                     ProductId = 3,
                     SalesPersonId = 2,
                     CustomerId = 3,
-                    SaleDate = DateTime.Now,
+                    SaleDate = new DateTime(2020, 7, 11, 0, 0, 0),
+                },
+                new Sale
+                {
+                    ProductId = 5,
+                    SalesPersonId = 3,
+                    CustomerId = 4,
+                    SaleDate = new DateTime(2021, 4, 5, 0, 0, 0),
+                },
+                new Sale
+                {
+                    ProductId = 4,
+                    SalesPersonId = 4,
+                    CustomerId = 5,
+                    SaleDate = new DateTime(2022, 3, 10, 0, 0, 0),
+                },
+                new Sale
+                {
+                    ProductId = 3,
+                    SalesPersonId = 2,
+                    CustomerId = 3,
+                    SaleDate = new DateTime(2023, 6, 1, 0, 0, 0),
+                },
+                new Sale
+                {
+                    ProductId = 1,
+                    SalesPersonId = 4,
+                    CustomerId = 4,
+                    SaleDate = new DateTime(2023, 1, 11, 0, 0, 0),
+                },
+                new Sale
+                {
+                    ProductId = 4,
+                    SalesPersonId = 4,
+                    CustomerId = 5,
+                    SaleDate = new DateTime(2022, 2, 1, 0, 0, 0),
+                },
+                new Sale
+                {
+                    ProductId = 5,
+                    SalesPersonId = 3,
+                    CustomerId = 1,
+                    SaleDate = new DateTime(2023, 2, 15, 0, 0, 0),
                 }
             });
             dbContext.SaveChanges();

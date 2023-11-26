@@ -57,14 +57,14 @@ namespace BeSpokedBikes.Controllers
 
         }
 
-        [HttpGet("sales")]
+        [HttpGet("sales-team")]
         public async Task<ActionResult> GetSalesTeam() 
         {
             var salesteam = await _context.SalesPersons.ToListAsync();
             return Ok(salesteam);
         }
 
-        [HttpGet("sales/{id}")]
+        [HttpGet("sales-team/{id}")]
         public async Task<ActionResult> GetSalesPerson(int id)
         {
             var salesPerson = await _context.SalesPersons.FindAsync(id);
@@ -75,7 +75,7 @@ namespace BeSpokedBikes.Controllers
             return Ok(salesPerson);
         }
 
-        [HttpPut("sales/{id}")]
+        [HttpPut("sales-team/{id}")]
         public async Task<ActionResult> UpdateSalesPerson(int id, [FromBody] SalesPerson newProduct)
         {
             var salesPerson = await _context.SalesPersons.FindAsync(id);
@@ -108,6 +108,27 @@ namespace BeSpokedBikes.Controllers
             }
 
             return Ok(customers);
+        }
+
+        [HttpGet("sales")]
+        public async Task<ActionResult> GetSales()
+        {
+            var sales = _context.Sales.ToList();
+
+            if(sales == null)
+            {
+                return NotFound();
+            }
+
+            foreach(var sale in sales)
+            {
+                sale.Product = await _context.Products.FindAsync(sale.ProductId);
+                sale.Customer = await _context.Customers.FindAsync(sale.CustomerId);
+                sale.SalesPerson = await _context.SalesPersons.FindAsync(sale.SalesPersonId);
+                sale.Commission = Math.Round((sale.Product.SalePrice - sale.Product.PurchasePrice) * (decimal)sale.Product.CommissionPercentage, 2);
+            }
+
+            return Ok(sales);
         }
     }
 }
