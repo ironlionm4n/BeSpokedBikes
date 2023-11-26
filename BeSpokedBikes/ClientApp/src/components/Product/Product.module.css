@@ -1,0 +1,11 @@
+﻿.productContainer {
+  width: 20rem;
+  margin: 5px;
+  background-color: red;
+  padding: 5px;
+}
+
+.productContainer div {
+  background-color: blue;
+  width: 100%;
+}
