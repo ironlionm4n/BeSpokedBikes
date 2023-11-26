@@ -8,7 +8,7 @@ const SalesTeam = () => {
     const getSalesTeam = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/BeSpokedBikesAPI/sales"
+          "http://localhost:5000/BeSpokedBikesAPI/sales-team"
         );
         if (response.ok) {
           const data = await response.json();

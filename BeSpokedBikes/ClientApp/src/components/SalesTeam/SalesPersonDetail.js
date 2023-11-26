@@ -58,7 +58,7 @@ const SalesPersonDetail = () => {
     };
     try {
       const response = await fetch(
-        `http://localhost:5000/BeSpokedBikesAPI/sales/${id}`,
+        `http://localhost:5000/BeSpokedBikesAPI/sales-team/${id}`,
         {
           method: "PUT",
           headers: {
@@ -96,7 +96,7 @@ const SalesPersonDetail = () => {
       try {
         setIsLoading(true);
         const response = await fetch(
-          `http://localhost:5000/BeSpokedBikesAPI/sales/${id}`
+          `http://localhost:5000/BeSpokedBikesAPI/sales-team/${id}`
         );
         if (response.ok) {
           const data = await response.json();
