@@ -20,8 +20,9 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+#region DbContext Seeding
 // Creating scoped service for seeding test data
-using(var scope = app.Services.CreateScope())
+using (var scope = app.Services.CreateScope())
 {
     // BeSpokedBikesDbContext instance, used to interact with the in-memory database
     var dbContext = scope.ServiceProvider.GetRequiredService<BeSpokedBikesDbContext>();
@@ -250,6 +251,7 @@ using(var scope = app.Services.CreateScope())
     });
     dbContext.SaveChanges();
 }
+#endregion
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
