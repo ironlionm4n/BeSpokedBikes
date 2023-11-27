@@ -4,6 +4,8 @@ import Customer from "./Customer";
 
 const Customers = () => {
   const [customers, setCustomers] = useState([]);
+
+  // Fetch the customers data from endpoint on component mount
   useEffect(() => {
     const getCustomers = async () => {
       try {

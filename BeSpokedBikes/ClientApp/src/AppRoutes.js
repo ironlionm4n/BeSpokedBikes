@@ -5,6 +5,7 @@ import Customers from "./components/Customers/Customers";
 import SalesPersonDetail from "./components/SalesTeam/SalesPersonDetail";
 import ProductDetail from "./components/Product/ProductDetail";
 import Sales from "./components/Sales/Sales";
+import NotFound from "./components/NotFound";
 
 const AppRoutes = [
   {
@@ -34,6 +35,10 @@ const AppRoutes = [
   {
     path: "/sales",
     element: <Sales />,
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ];
 

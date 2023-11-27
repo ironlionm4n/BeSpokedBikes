@@ -2,10 +2,14 @@ import React from "react";
 import styles from "./Customer.module.css";
 
 const Customer = ({ customer }) => {
+  //#region  Derived state variables
   const startDate = new Date(customer.startDate);
+  // Format start date for mm/dd/yyyy during rendering
   const formattedDate = `${
     startDate.getMonth() + 1
   }/${startDate.getDate()}/${startDate.getFullYear()}`;
+  //#endregion
+
   return (
     <div className={styles.customerContainer}>
       <div className={styles.customerContent}>

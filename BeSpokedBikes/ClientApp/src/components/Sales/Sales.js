@@ -9,6 +9,7 @@ const Sales = () => {
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
 
+  // Handler function for when the start date was changed
   const handleStartChanged = (event) => {
     event.preventDefault();
     const startDateSplit = event.target.value.split("-");
@@ -17,12 +18,15 @@ const Sales = () => {
     );
   };
 
+  // Handler function for when the end date was changed
   const handleEndChanged = (event) => {
     event.preventDefault();
     const endDateSplit = event.target.value.split("-");
     setEndDate(new Date(endDateSplit[0], endDateSplit[1] - 1, endDateSplit[2]));
   };
 
+  // Handles fetching all of the sales data from the api
+  // Runs on component mount
   useEffect(() => {
     const getSalesData = async () => {
       try {
@@ -43,6 +47,8 @@ const Sales = () => {
     getSalesData();
   }, []);
 
+  // Handles filtering the sales based on the start and/or end date
+  // Runs when start date, end date or sales state variables change
   useEffect(() => {
     let filteredSales = null;
     if (startDate && endDate) {
@@ -76,6 +82,7 @@ const Sales = () => {
           handleEndChanged={handleEndChanged}
         />
         <div className={styles.saleGridContainer}>
+          {/*This ternary handles rendering the filtered sales data or the initial sales data */}
           {filteredSales !== null
             ? filteredSales.map((sale) => <Sale sale={sale} key={sale.id} />)
             : sales.map((sale) => <Sale sale={sale} key={sale.id} />)}

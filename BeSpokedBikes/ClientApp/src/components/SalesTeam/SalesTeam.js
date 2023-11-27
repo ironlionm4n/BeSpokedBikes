@@ -4,6 +4,9 @@ import styles from "./SalesTeam.module.css";
 
 const SalesTeam = () => {
   const [salesTeam, setSalesTeam] = useState([]);
+
+  // Handles fetching all the sales team data
+  // Runs on component mount
   useEffect(() => {
     const getSalesTeam = async () => {
       try {

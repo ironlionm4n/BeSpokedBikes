@@ -4,6 +4,9 @@ import styles from "./Product.module.css";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
+
+  // Handles fetching all of the products data from the api
+  // Runs on component mount
   useEffect(() => {
     const getProductsData = async () => {
       try {

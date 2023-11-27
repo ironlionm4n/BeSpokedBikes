@@ -1,5 +1,6 @@
 import React from "react";
 
+// Style object
 const dateInputStyle = {
   display: "flex",
   alignItems: "center",
