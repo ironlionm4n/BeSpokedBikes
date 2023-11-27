@@ -6,7 +6,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Configuring in-memory database for this assessment
 builder.Services.AddDbContext<BeSpokedBikesDbContext>(options => options.UseInMemoryDatabase("BeSpokedBikesDb"));
+
 
 // Adding CORS Policy
 builder.Services.AddCors(options =>
@@ -21,6 +24,7 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 
 #region DbContext Seeding
+
 // Creating scoped service for seeding test data
 using (var scope = app.Services.CreateScope())
 {
@@ -66,7 +70,7 @@ using (var scope = app.Services.CreateScope())
         Style = BikeStyle.BMX,
         PurchasePrice = 455.99M,
         SalePrice = 875.99M,
-        QtyOnHand = 1,
+        QtyOnHand = 6,
         CommissionPercentage = .15
         },
         new Product {
@@ -76,7 +80,7 @@ using (var scope = app.Services.CreateScope())
         Style = BikeStyle.Road,
         PurchasePrice = 1199.00M,
         SalePrice = 2499.99M,
-        QtyOnHand = 3,
+        QtyOnHand = 5,
         CommissionPercentage = .17
         },
     });
@@ -197,14 +201,14 @@ using (var scope = app.Services.CreateScope())
             ProductId = 2,
             SalesPersonId = 1,
             CustomerId = 2,
-            SaleDate = new DateTime(2019, 12, 21, 0, 0, 0),
+            SaleDate = new DateTime(2023, 11, 21, 0, 0, 0),
         },
         new Sale
         {
             ProductId = 3,
             SalesPersonId = 2,
             CustomerId = 3,
-            SaleDate = new DateTime(2020, 7, 11, 0, 0, 0),
+            SaleDate = new DateTime(2023, 5, 24, 0, 0, 0),
         },
         new Sale
         {
@@ -251,6 +255,7 @@ using (var scope = app.Services.CreateScope())
     });
     dbContext.SaveChanges();
 }
+
 #endregion
 
 // Configure the HTTP request pipeline.

@@ -110,8 +110,11 @@ const ProductDetail = () => {
               </p>
               <p>Purchase Price: ${product.purchasePrice.toFixed(2)}</p>
               <p>Sale Price: ${product.salePrice.toFixed(2)}</p>
+              <p>
+                Commission Percentage: {product.commissionPercentage.toFixed(2)}
+                %
+              </p>
               <p>Quantity On Hande: {product.qtyOnHand}</p>
-              <p>Commission Percentage: {product.commissionPercentage}%</p>
             </div>
             <form onSubmit={handleSubmit} className={styles.details}>
               <div className={styles.input}>

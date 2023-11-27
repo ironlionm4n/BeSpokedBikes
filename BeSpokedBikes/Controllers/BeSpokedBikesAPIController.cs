@@ -113,7 +113,7 @@ namespace BeSpokedBikes.Controllers
         [HttpGet("sales")]
         public async Task<ActionResult> GetSales()
         {
-            var sales = _context.Sales.ToList();
+            var sales = await _context.Sales.ToListAsync();
 
             if(sales == null)
             {

@@ -17,7 +17,7 @@ const Sale = ({ sale }) => {
           <h5>
             Sales Person: {salesPerson.firstName} {salesPerson.lastName}
           </h5>
-          <p>Sale Price: ${product.salePrice}</p>
+          <p>Sale Price: ${product.salePrice.toFixed(2)}</p>
           <p>Date of Sale: {formatDate(sale.saleDate)}</p>
           <p>Commission Earned: ${sale.commission.toFixed(2)}</p>
         </div>
@@ -28,9 +28,9 @@ const Sale = ({ sale }) => {
         <div>
           <h6>
             Customer: {customer.firstName} {customer.lastName}
+          </h6>
             <p>Customer Address: {customer.address}</p>
             <p>Customer Phone Number: {customer.phoneNumber}</p>
-          </h6>
         </div>
       </>
     </div>

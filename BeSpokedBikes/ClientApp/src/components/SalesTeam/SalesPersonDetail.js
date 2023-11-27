@@ -229,7 +229,7 @@ const SalesPersonDetail = () => {
           </div>
         </>
       ) : (
-        <p>Sales Person Not Found</p>
+        <h1 style={{ color: "white" }}>Sales Person Not Found</h1>
       )}
     </>
   );

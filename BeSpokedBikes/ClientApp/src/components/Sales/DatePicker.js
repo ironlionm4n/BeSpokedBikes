@@ -6,7 +6,7 @@ const dateInputStyle = {
   alignItems: "center",
   justifyContent: "space-evenly",
   gap: "12px",
-  height: "2rem",
+  height: "1.5rem",
   margin: "12px",
   color: "#495057",
   fontSize: "1.2rem",

@@ -1,8 +1,9 @@
 .saleContainer {
   background-color: var(--color-dark);
-  padding: 5px;
+  padding: 4px;
   border-radius: 10px;
   border: 1px solid black;
+  margin: 4px;
 }
 
 .saleContainer div {
@@ -26,4 +27,5 @@
   grid-template-columns: 1fr 1fr;
   gap: 5px;
   padding: 5px;
+  padding-bottom: 16px;
 }
