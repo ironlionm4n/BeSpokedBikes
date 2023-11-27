@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Loader from "../Loader";
 import styles from "./SalesPersonDetail.module.css";
 
+// Initial object for the update form fields
 const initialSalesPersonData = {
   firstName: "",
   lastName: "",
@@ -13,6 +14,7 @@ const initialSalesPersonData = {
   startDate: "",
 };
 
+// Function to format the data in yyyy/mm/dd
 const formatDate = (date) => {
   if (!date) return null;
 
@@ -21,10 +23,12 @@ const formatDate = (date) => {
   let day = "" + d.getDate();
   let year = d.getFullYear();
 
+  // Prepend 0 to single digit month
   if (month.length < 2) {
     month = "0" + month;
   }
 
+  // Prepend 0 to single digit day
   if (day.length < 2) {
     day = "0" + day;
   }
@@ -37,6 +41,8 @@ const SalesPersonDetail = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [salesPerson, setSalesPerson] = useState(null);
   const [updateData, setUpdateData] = useState(initialSalesPersonData);
+
+  // Derived state for termination date
   let terminationDate = salesPerson?.terminationDate
     ? new Date(salesPerson.terminationDate)
     : "";
@@ -46,9 +52,12 @@ const SalesPersonDetail = () => {
     }/${terminationDate.getDate()}/${terminationDate.getFullYear()}`;
   }
 
+  // Function that handles the onSubmit event for updating the sales person
+  // Uses the state data formed through the update data form
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsLoading(true);
+    // Formatting object for endpoint body
     const formattedBody = {
       ...updateData,
       startDate: new Date(updateData.startDate).toISOString(),
@@ -56,8 +65,8 @@ const SalesPersonDetail = () => {
         ? new Date(updateData.terminationDate).toISOString()
         : null,
     };
-    console.log(JSON.stringify(formattedBody));
     try {
+      // Fetch API for PUT request to update this sales person information
       const response = await fetch(
         `http://localhost:5000/BeSpokedBikesAPI/sales-team/${id}`,
         {
@@ -84,14 +93,16 @@ const SalesPersonDetail = () => {
     }
   };
 
+  // Function to update the state used in the update sales person endpoint
   const handleChange = (event) => {
     const { name, value } = event.target;
     setUpdateData((prevData) => ({
       ...prevData,
-      [name]: value,
+      [name]: value, // Dynamically set the property based on the input name
     }));
   };
 
+  // Handle fetching the sales person data
   useEffect(() => {
     const getSalesPerson = async () => {
       try {

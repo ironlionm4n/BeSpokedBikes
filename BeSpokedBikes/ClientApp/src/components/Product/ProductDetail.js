@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Loader from "../Loader";
 import styles from "./ProductDetail.module.css";
 
+// Initial object for update form data
 const initialUpdateData = {
   manufacturer: "",
   name: "",
@@ -18,6 +19,8 @@ const ProductDetail = () => {
   const [product, setProduct] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [updateData, setUpdateData] = useState(initialUpdateData);
+
+  // Handles the submit event for passing the update data form to the update product endpoint
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsLoading(true);
@@ -51,14 +54,16 @@ const ProductDetail = () => {
     }
   };
 
+  // Function to update the state used in the update product detail endpoint
   const handleChange = (event) => {
     const { name, value } = event.target;
     setUpdateData((prevData) => ({
       ...prevData,
-      [name]: value,
+      [name]: value, // Dynamically set the property based on the input name
     }));
   };
 
+  // Handle fetching this specific product's details
   useEffect(() => {
     const getProductData = async () => {
       try {
@@ -96,6 +101,7 @@ const ProductDetail = () => {
               <h3>{product.name}</h3>
               <p>
                 Bike Style:{" "}
+                {/* Ternary chaining for displaying the correct style of bike */}
                 {product.style === 0
                   ? "Road Bike"
                   : product.style === 1
@@ -201,13 +207,4 @@ const ProductDetail = () => {
   );
 };
 
-// const initialUpdateData = {
-//     manufacturer: "",
-//     name: "",
-//     style: 0,
-//     purchasePrice: 0,
-//     salePrice: 0,
-//     qtyOnHand: 0,
-//     commisionPercentage: 0,
-//   };
 export default ProductDetail;

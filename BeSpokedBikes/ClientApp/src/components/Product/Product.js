@@ -10,6 +10,7 @@ const Product = ({ product }) => {
         </h3>
         <p>Purchase Price: ${product.purchasePrice.toFixed(2)}</p>
         <p>Sale Price: ${product.salePrice.toFixed(2)}</p>
+        {/* Ternary chaining for displaying the correct style of bike */}
         <p>
           {product.style === 0
             ? "Road Bike"

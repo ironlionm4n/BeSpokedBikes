@@ -120,11 +120,15 @@ namespace BeSpokedBikes.Controllers
                 return NotFound();
             }
 
+            // For each sale object in the list of sales update the various properties so there is data assigned to the object returned from this 
             foreach(var sale in sales)
             {
                 sale.Product = await _context.Products.FindAsync(sale.ProductId);
                 sale.Customer = await _context.Customers.FindAsync(sale.CustomerId);
                 sale.SalesPerson = await _context.SalesPersons.FindAsync(sale.SalesPersonId);
+
+                // Commission is calcualted as the difference between the sale price and purchase price times the commission percentage of the product
+                // Commission is rounded to 2 decimal places as it represents currency value
                 sale.Commission = Math.Round((sale.Product.SalePrice - sale.Product.PurchasePrice) * (decimal)sale.Product.CommissionPercentage, 2);
             }
 

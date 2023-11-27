@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./Sale.module.css";
 
+// Format date for mm/dd/yyyy format
 const formatDate = (date) => {
   let d = new Date(date);
-
   return `${d.getMonth() + 1}/${d.getDate()}/${d.getFullYear()}`;
 };
 
